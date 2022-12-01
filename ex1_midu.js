@@ -8,12 +8,18 @@ The wrapping paper is the * symbol and to wrap a gift the * symbol is placed so 
 
 // const wrapped = wrapGifts(gifts);
 
-function wrapping(gifts) {
-    let wrapped = [];
-    return gifts.map(gift => {
-        wrapped = "*".repeat(gift.length + 2);
-        return `${wrapped}\n*${gift}*\n${wrapped}`;
-    })
-}
+// function wrapping(gifts) {
+//     let wrapped = [];
+//     return gifts.map(gift => {
+//         wrapped = "*".repeat(gift.length + 2);
+//         return `${wrapped}\n*${gift}*\n${wrapped}`;
+//     })
+// }
 
-console.log(wrapping(["book", "game", "socks"]));
+// console.log(wrapping(["book", "game", "socks"]));
+
+
+wrapping = gifts => gifts.map(gift => {
+    let wrapped = "*".repeat(gift.length + 2);
+    return `${wrapped}\n*${gift}*\n${wrapped}`;
+})
