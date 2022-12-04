@@ -82,3 +82,51 @@ function fitsInOneBox(boxes) {
         );
 });
 } // 170pts
+
+// test 2
+function fitsInOneBox(boxes) {
+  return boxes.sort((a, b) => a.l - b.l).every((box, i) => {
+      // Si es la última caja, siempre devuelve verdadero
+      if (i === boxes.length - 1) {
+          return true;
+      }
+
+      // Obtiene las cajas restantes
+      const remainingBoxes = boxes.slice(i + 1);
+
+      // Devuelve verdadero si todas las cajas restantes tienen dimensiones mayores que la caja actual
+      return remainingBoxes.every(box2 => box.l < box2.l && box.w < box2.w && box.h < box2.h);
+  });
+} //170pts (using every)
+
+// test 3
+function fitsInOneBox(boxes) {
+    return boxes.sort((a, b) => a.l - b.l).every((box, i) => {
+        // Si es la última caja, siempre devuelve verdadero
+        if (i === boxes.length - 1) {
+            return true;
+        }
+
+        // Obtiene las cajas restantes
+        const remainingBoxes = boxes.slice(i + 1);
+
+        // Devuelve falso si se encuentra una caja que no tiene dimensiones mayores que la caja actual
+        return !remainingBoxes.find(box2 => box.l >= box2.l || box.w >= box2.w || box.h >= box2.h);
+    });
+} // 170pts (using find)
+
+// test 4
+function fitsInOneBox(boxes) {
+  return boxes.sort((a, b) => a.l - b.l).every((box, i) => {
+      // Si es la última caja, siempre devuelve verdadero
+      if (i === boxes.length - 1) {
+          return true;
+      }
+
+      // Obtiene las cajas restantes
+      const remainingBoxes = boxes.slice(i + 1);
+
+      // Devuelve verdadero si alguna de las cajas restantes no tiene dimensiones mayores que la caja actual
+      return !remainingBoxes.some(box2 => box.l >= box2.l || box.w >= box2.w || box.h >= box2.h);
+  });
+} // 170pts (using some)
